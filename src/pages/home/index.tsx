@@ -1,6 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {
+  FlatList,
   SafeAreaView,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -25,6 +27,11 @@ export const Home = () => {
     setTasks([...tasks, data]);
   };
 
+  const removeTask = (taskId: number) => {
+    const newArray = tasks.filter(filteredTask => filteredTask.id !== taskId);
+    setTasks(newArray);
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -41,12 +48,30 @@ export const Home = () => {
           style={styles.button}>
           <Text style={styles.buttonText}>Adicionar</Text>
         </TouchableOpacity>
-        <Text style={styles.titleTask}>Minhas Tarefas:</Text>
-        {tasks.map(task => (
-          <Text key={task.id} style={styles.taskResponse}>
-            {task.text}
-          </Text>
-        ))}
+        <Text style={styles.titleTasks}>Minhas Tarefas:</Text>
+
+        <FlatList
+          data={tasks}
+          keyExtractor={(taskInTasks: Task) => taskInTasks.id.toString()}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() => removeTask(item.id)}
+              style={styles.buttonTask}>
+              <Text style={styles.titleTask}>{item.text}</Text>
+            </TouchableOpacity>
+          )}
+        />
+        {/* Essa é uma das formas de se utilizar scroll de lista, mas ela é menos performática */}
+        {/* <ScrollView>
+          {tasks.map(task => (
+            <TouchableOpacity
+              onPress={() => removeTask(task.id)}
+              key={task.id}
+              style={styles.buttonTask}>
+              <Text style={styles.titleTask}>{task.text}</Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView> */}
       </View>
     </SafeAreaView>
   );

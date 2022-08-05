@@ -16,17 +16,16 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold'
   },
-  titleTask:{
+  titleTasks:{
     color: '#f1f1f1',
     fontSize: 25,
     fontWeight: 'bold',
     marginTop: 20
   },
-  taskResponse:{
-    color: 'green',
-    fontSize: 15,
+  titleTask:{
+    color: '#f1f1f1',
+    fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 10
   },
   input:{
     backgroundColor: '#29292e',
@@ -45,10 +44,16 @@ export const styles = StyleSheet.create({
     width: '50%',
     marginLeft: '25%'
   },
+  buttonTask: {
+    backgroundColor: 'gray',
+    marginTop: 10,
+    alignItems: 'center',
+    borderRadius: 50,
+    padding: 10,
+  },
   buttonText: {
     color: 'black',
     textAlign: 'center',
     fontSize: 15
   }
-
 });
