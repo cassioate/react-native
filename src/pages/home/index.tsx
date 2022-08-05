@@ -12,7 +12,7 @@ import {stylesHome} from './home-style';
 
 export const Home = () => {
   const [newTask, setNewTask] = useState('');
-  const tasks = useContext(TasksContext);
+  const {addTask} = useContext(TasksContext);
 
   return (
     <SafeAreaView style={stylesHome.safeArea}>
@@ -25,7 +25,7 @@ export const Home = () => {
           placeholderTextColor="#555"
         />
         <TouchableOpacity
-          // onPress={addTask}
+          onPress={() => addTask(newTask)}
           activeOpacity={0.7}
           style={stylesHome.button}>
           <Text style={stylesHome.buttonText}>Adicionar</Text>
