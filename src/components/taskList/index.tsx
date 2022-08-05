@@ -1,24 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {FlatList, Text, TouchableOpacity} from 'react-native';
-import {Task} from '../../types/tasks';
+import {ITasksContext, TasksContext} from '../../context/tasksContext';
 import {stylesTaskList} from './taskList-style';
 
-interface TaskListProps {
-  tasks: Task[];
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  removeTask: Function;
-}
+export const TaskList = () => {
+  const tasks = useContext(TasksContext);
 
-export const TaskList = (props: TaskListProps) => {
   return (
     <FlatList
-      data={props.tasks}
-      keyExtractor={(taskInTasks: Task) => taskInTasks.id.toString()}
+      data={tasks as unknown as ITasksContext[]}
+      keyExtractor={taskInTasks => taskInTasks.id.toString()}
       renderItem={({item}) => (
         <TouchableOpacity
-          onPress={() => props.removeTask(item.id)}
+          /* onPress={() => removeTask(item.id)} */
           style={stylesTaskList.buttonTask}>
-          <Text style={stylesTaskList.titleTask}>{item.text}</Text>
+          <Text style={stylesTaskList.titleTask}>{item.title}</Text>
         </TouchableOpacity>
       )}
     />
