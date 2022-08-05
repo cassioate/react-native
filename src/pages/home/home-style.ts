@@ -1,7 +1,6 @@
-
 import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
+export const stylesHome = StyleSheet.create({
   safeArea: {
     flex: 2,
   },
@@ -11,23 +10,18 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 20,
   },
-  title:{
-    color: '#f1f1f1',
-    fontSize: 25,
-    fontWeight: 'bold'
-  },
-  titleTasks:{
+  title: {
     color: '#f1f1f1',
     fontSize: 25,
     fontWeight: 'bold',
-    marginTop: 20
   },
-  titleTask:{
+  titleTasks: {
     color: '#f1f1f1',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
+    marginTop: 20,
   },
-  input:{
+  input: {
     backgroundColor: '#29292e',
     color: '#f1f1f1',
     fontSize: 15,
@@ -42,18 +36,11 @@ export const styles = StyleSheet.create({
     borderRadius: 7,
     padding: 15,
     width: '50%',
-    marginLeft: '25%'
-  },
-  buttonTask: {
-    backgroundColor: 'gray',
-    marginTop: 10,
-    alignItems: 'center',
-    borderRadius: 50,
-    padding: 10,
+    marginLeft: '25%',
   },
   buttonText: {
     color: 'black',
     textAlign: 'center',
-    fontSize: 15
-  }
+    fontSize: 15,
+  },
 });

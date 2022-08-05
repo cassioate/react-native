@@ -1,19 +1,14 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
-  FlatList,
   SafeAreaView,
-  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {styles} from './home-style';
-
-interface Task {
-  id: number;
-  text: string;
-}
+import {TaskList} from '../../components/taskList';
+import {Task} from '../../types/tasks';
+import {stylesHome} from './home-style';
 
 export const Home = () => {
   const [newTask, setNewTask] = useState('');
@@ -33,45 +28,24 @@ export const Home = () => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome</Text>
+    <SafeAreaView style={stylesHome.safeArea}>
+      <View style={stylesHome.container}>
+        <Text style={stylesHome.title}>Welcome</Text>
         <TextInput
           onChangeText={change => setNewTask(change)}
           placeholder="Nova tarefa"
-          style={styles.input}
+          style={stylesHome.input}
           placeholderTextColor="#555"
         />
         <TouchableOpacity
           onPress={addTask}
           activeOpacity={0.7}
-          style={styles.button}>
-          <Text style={styles.buttonText}>Adicionar</Text>
+          style={stylesHome.button}>
+          <Text style={stylesHome.buttonText}>Adicionar</Text>
         </TouchableOpacity>
-        <Text style={styles.titleTasks}>Minhas Tarefas:</Text>
+        <Text style={stylesHome.titleTasks}>Minhas Tarefas:</Text>
 
-        <FlatList
-          data={tasks}
-          keyExtractor={(taskInTasks: Task) => taskInTasks.id.toString()}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              onPress={() => removeTask(item.id)}
-              style={styles.buttonTask}>
-              <Text style={styles.titleTask}>{item.text}</Text>
-            </TouchableOpacity>
-          )}
-        />
-        {/* Essa é uma das formas de se utilizar scroll de lista, mas ela é menos performática */}
-        {/* <ScrollView>
-          {tasks.map(task => (
-            <TouchableOpacity
-              onPress={() => removeTask(task.id)}
-              key={task.id}
-              style={styles.buttonTask}>
-              <Text style={styles.titleTask}>{task.text}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView> */}
+        <TaskList tasks={tasks} removeTask={removeTask} />
       </View>
     </SafeAreaView>
   );
