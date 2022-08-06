@@ -7,7 +7,7 @@ export const TaskList = () => {
   const {tasks, removeTask} = useContext(TasksContext);
 
   const handleRemoveTask = (taskId: string) => {
-    Alert.alert('Excluir', 'Deseja realmente excluir a tarefa?', [
+    Alert.alert('Deletar', 'Deseja realmente excluir a tarefa?', [
       {
         text: 'Sim',
         onPress: () => removeTask(taskId),

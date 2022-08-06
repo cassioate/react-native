@@ -25,6 +25,7 @@ export const Home = () => {
           placeholderTextColor="#555"
         />
         <TouchableOpacity
+          testID="addButton"
           onPress={() => addTask(newTask)}
           activeOpacity={0.7}
           style={stylesHome.button}>

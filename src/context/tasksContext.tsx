@@ -37,7 +37,7 @@ export const TasksProvider: FunctionComponent<IProps> = ({children}) => {
 
   const loadTasks = async () => {
     const taskList = await AsyncStorage.getItem(tasksData);
-    taskList ? setTasks(JSON.parse(taskList)) : setTasks(tasks);
+    taskList && setTasks(JSON.parse(taskList));
   };
 
   const addTask = async (newTask: string): Promise<void> => {
